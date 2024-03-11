@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+<input type="text" id="myTextbox" name="myTextbox">
+<input type="submit" value="Search">
+<h2>{{body}}</h2>
+<script>
+document.querySelector('input[type="submit"]').addEventListener('click', function(event) {
+  event.preventDefault();
+    var search = document.getElementById('myTextbox').value; 
+    console.log(search);
+      window.location.href = "/songs?title=" + encodeURIComponent(search);
+
+});
+</script>

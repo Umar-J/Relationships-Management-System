@@ -1,0 +1,14 @@
+usecase:
+enter name into searchbar, relevant stuff comes, click on correct one and details comes
+failure
+1. no relevvant stuff
+1a. if no relevant then respond (no relevant)
+2.want to edit information
+1 click on edit informatin
+2 autnenticates
+3. user select org
+4. select column to edit
+5. show old text and space for new text
+6. db updated
+error
+2. no login, request for sign up
