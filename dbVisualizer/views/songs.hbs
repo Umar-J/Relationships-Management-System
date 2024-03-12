@@ -1,6 +1,8 @@
 <h3>{{title}}</h3>
 <div class="jumbotron"> 
-   {{#each songEntries}} 
+   {{#each entries}} 
       <h3><a href= 'song/{{this.id}}'>{{this.id}} {{this.title}}</a></h3> 
+      {{!-- {{  <h3><a href= 'song/{{this.RelationshipID}}'>  {{this.id}} {{this.RelationshipName}}</a></h3>   }} --}}
+
    {{/each}} 
 </div>

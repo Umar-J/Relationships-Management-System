@@ -62,8 +62,10 @@ app.use(logger('dev'))
 //routes
 app.get('/index.html', routes.index)
 app.get('/songs', routes.find)
+app.get('/orgs', routes.find2) //new
 app.get('/users', routes.users)
 app.get('/song/*', routes.songDetails)
+app.get('/org/*', routes.orgDetails) //new
 
 //start server
 app.listen(PORT, err => {
@@ -71,7 +73,7 @@ app.listen(PORT, err => {
   else {
     console.log(`Server listening on port: ${PORT} CNTL:-C to stop`)
     console.log(`To Test:`)
-    console.log('user: ldnel password: secret')
+    console.log('user: amdin password: admin')
     console.log('http://localhost:3000/index.html')
     console.log('http://localhost:3000/users')
     console.log('http://localhost:3000/songs?title=Love')

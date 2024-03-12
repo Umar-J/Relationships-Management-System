@@ -10,7 +10,7 @@ db.serialize(function() {
   db.run(sqlString)
   sqlString = "INSERT OR REPLACE INTO users VALUES ('ldnel', 'secret')"
   db.run(sqlString)
-  sqlString = "INSERT OR REPLACE INTO users VALUES ('frank', 'secret2')"
+  sqlString = "INSERT OR REPLACE INTO users VALUES ('admin', 'admin')"
   db.run(sqlString)
 })
 
@@ -111,17 +111,39 @@ exports.find = function(request, response) {
 
   let urlObj = parseURL(request, response)
   let sql = "SELECT id, title FROM songs"
+  //let sql = "Select RelationshipID, RelationshipName from relationships"
 
   if (urlObj.query['title']) {
     console.log("finding title: " + urlObj.query['title'])
-    sql = "SELECT id, title FROM songs WHERE title LIKE '%" +
-      urlObj.query['title'] + "%'"
+    sql = "SELECT id, title FROM songs WHERE title LIKE '%" + urlObj.query['title'] + "%'"
+    //sql = "Select RelationshipID, RelationshipName from relationships WHERE RelationshipName LIKE '%" + urlObj.query['title'] + "%'"
   }
 
   db.all(sql, function(err, rows) {
     response.render('songs', {
-      title: 'Songs:',
-      songEntries: rows
+      title: 'Organizations matching search: '+ urlObj.query['title'],
+      entries: rows
+    })
+  })
+}
+exports.find2 = function(request, response) {
+  // /songs?title=Girl
+  console.log("RUNNING FIND 2");
+
+  let urlObj = parseURL(request, response)
+  //let sql = "SELECT id, title FROM songs"
+  let sql = "Select RelationshipID, RelationshipName from relationships"
+
+  if (urlObj.query['title']) {
+    console.log("finding title: " + urlObj.query['title'])
+    //sql = "SELECT id, title FROM songs WHERE title LIKE '%" + urlObj.query['title'] + "%'"
+    sql = "Select RelationshipID, RelationshipName from relationships WHERE RelationshipName LIKE '%" + urlObj.query['title'] + "%'"
+  }
+
+  db.all(sql, function(err, rows) {
+    response.render('relationships', {
+      title: 'Organizations 22 matching search: '+ urlObj.query['title'],
+      entries: rows
     })
   })
 }
@@ -140,6 +162,25 @@ exports.songDetails = function(request, response) {
     response.render('songDetails', {
       title: 'Songs Details:',
       songEntries: rows
+    })
+  })
+
+}
+exports.orgDetails = function(request, response) {
+
+  let urlObj = parseURL(request, response)
+  let orgID = urlObj.path //expected form: /song/235
+  orgID = orgID.substring(orgID.lastIndexOf("/") + 1, orgID.length)
+
+  let sql = "SELECT * FROM relationships WHERE RelationshipID=" + orgID
+  console.log("GET RELATIONSHIP DETAILS: " + orgID)
+
+  db.all(sql, function(err, rows) {
+    console.log('Relationship Data')
+    console.log(rows)
+    response.render('relationshipDetails', {
+      title: 'Relationship Details:',
+      entries: rows
     })
   })
 

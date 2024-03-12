@@ -1,0 +1,35 @@
+<h3>{{title}}</h3>
+<div> 
+   {{#each entries}} 
+      <h1 class="bg-primary text-white">{{this.RelationshipID}}:  {{this.RelationshipName}} </h1> 
+      <p>Category: {{this.Category}}</p> 
+      <p>Lead Contact: {{this.LeadContact}}</p> 
+      <p>Title: {{this.Title}}</p> 
+      <p>Email: {{this.EmailAddress}}</p> 
+      <p>Phone: {{this.Phone}}</p>
+      <p>Relationship Summary: {{this.RelationshipSummary}}</p> 
+      <p>Link To Relationship Profile: {{this.LinkToRelationshipProfile}}</p>
+      <p>Lead OPS Unit: {{this.LeadOPSUnit}}</p>
+      <p>Lead OPS Contact: {{this.LeadOPSContact}}</p>
+      <p>Address: {{this.Address}}</p>
+      <p>Priorities Issues: {{this.PrioritiesIssues}}</p>
+      <p>Latest Interaction With OPS: {{this.LatestInteractionWithOPS}}</p>
+      <p>Link To Notes Minutes Docs: {{this.LinkToNotesMinutesDocs}}</p>
+      <p>Potential Partnership Opportunities: {{this.PotentialPartnershipOpportunities}}</p>
+      <p>Expectations: {{this.Expectations}}</p>
+      <p>Key OPS Strategies Related To This Relationship: {{this.KeyOPSStrategiesRelatedToThisRelationship}}</p>
+      <p>Notes For Key Interaction: {{this.NotesForKeyInteraction}}</p>
+      <p>Red Flags: {{this.RedFlags}}</p>
+      <div class="container">
+    <!-- Column 1 -->
+    <div class="column">
+        <div class="box">
+            <div class="title red-bg">STAKEHOLDER NAME</div>
+            <input type="text" name="stakeholderName" value="ABC Association">
+        </div>
+        <!-- Additional boxes for Column 1 -->
+    </div>
+    </div>
+
+	{{/each}} 
+</div>
